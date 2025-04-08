@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Cosmetic Procedures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Modern color palette with better contrast */
+    :root {
+      --primary-color: #6d4542;
+      --secondary-color: #d4a259;
+      --dark-color: #4a3434;
+      --light-color: #f9f6f7;
+      --accent-color: #d4a259;
+      --bg-color: #f0e8e8;
+      --category-bg: #ffffff;
+      --text-color: #5c4343;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+      --transition-standard: all 0.3s ease;
+    }
+    .category-icon-container 
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 40px 0 30px;
+      position: relative;
+    }
+    
+    /* Enhanced Navigation */
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.98);
+      padding: 15px 30px;
+      z-index: 1000;
+      border-bottom-left-radius: 20px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .nav-menu a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: var(--dark-color);
+      transition: var(--transition-standard);
+      font-weight: 600;
+      position: relative;
+      letter-spacing: 0.5px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      padding: 5px 0;
+    }
+    
+    .nav-menu a:hover,
+    .nav-menu a:focus {
+      color: var(--accent-color);
+      outline: none;
+    }
+    
+    /* Home icon link styling */
+    .nav-menu a:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      margin-left: 25px;
+      transition: var(--transition-standard);
+    }
+    
+    .nav-menu a:last-child:hover,
+    .nav-menu a:last-child:focus {
+      background-color: var(--accent-color);
+      transform: scale(1.1);
+    }
+    
+    .nav-menu a:last-child svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+    
+    /* Navigation underline effect */
+    .nav-menu a:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-menu a:not(:last-child):hover::after,
+    .nav-menu a:not(:last-child):focus::after {
+      width: 100%;
+    }
+    
+   /* Mobile Navigation */
+   .mobile-menu-btn {
+      display: none;
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      z-index: 1001;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      position: relative;
+      transition: var(--transition-standard);
+    }
+    
+    .mobile-menu-btn span::before,
+    .mobile-menu-btn span::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      transition: var(--transition-standard);
+    }
+    
+    .mobile-menu-btn span::before {
+      top: -6px;
+    }
+    
+    .mobile-menu-btn span::after {
+      top: 6px;
+    }
+    
+    .mobile-menu-btn.active span {
+      background-color: transparent;
+    }
+    
+    .mobile-menu-btn.active span::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+    
+    .mobile-menu-btn.active span::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+    
+    .mobile-nav-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: white;
+      z-index: 1000;
+      padding: 80px 30px 30px;
+      box-shadow: var(--shadow-lg);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .mobile-nav-menu.active {
+      transform: translateX(0);
+    }
+    
+    .mobile-nav-menu a {
+      display: block;
+      padding: 15px 0;
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 600;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition-standard);
+    }
+    
+    .mobile-nav-menu a:hover,
+    .mobile-nav-menu a:focus {
+      color: var(--accent-color);
+      padding-left: 10px;
+    }
+    
+    .mobile-nav-menu a:last-child {
+      border-bottom: none;
+      margin-top: 20px;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-standard);
+    }
+    
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Hide desktop nav on mobile */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: flex;
+      }
+    }
+    
+    /* Show desktop nav on larger screens */
+    @media (min-width: 769px) {
+      .mobile-menu-btn,
+      .mobile-nav-menu,
+      .overlay {
+        display: none !important;
+      }
+    }
+
+    /* Rest of your existing styles... */
+    /* [Previous CSS styles remain unchanged until the media queries] */
+    
+    @media (max-width: 768px) {
+      /* Remove the previous .nav-menu styles for mobile */
+      /* Keep all other existing mobile styles */
+      
+      .category-icon-container {
+        width: 70px;
+        height: 70px;
+        margin-right: 15px;
+      }
+      
+      .category-title {
+        font-size: 1.1rem;
+      }
+      
+      .procedure-link {
+        font-size: 0.9rem;
+      }
+      
+      .page-title {
+        font-size: 1.8rem;
+      }
+      
+      .decoration {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .category-icon-container {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .procedure-list {
+        padding-left: 0;
+      }
+      
+      .page-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* Improved Procedures grid */
+    .procedures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .procedure-category {
+      margin-bottom: 30px;
+      transition: var(--transition-standard);
+      border-radius: 16px;
+      padding: 20px;
+      background-color: var(--category-bg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    
+    .procedure-category:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0,0,0,0.05);
+    }
+    
+    /* Category headers with improved layout */
+    .category-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .category-icon-container {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-standard);
+      background-color: var(--bg-color);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .category-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      transition: var(--transition-standard);
+    }
+    
+    .category-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin: 0;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .category-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+    
+    .category-header:hover .category-title::after {
+      width: 100%;
+    }
+    
+    /* Enhanced procedure lists */
+    .procedure-list {
+      padding-left: 100px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    
+    .procedure-item {
+      display: flex;
+      align-items: center;
+      transition: var(--transition-standard);
+      padding: 8px 0;
+    }
+    
+    .procedure-link {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      flex-grow: 1;
+      transition: color 0.2s ease;
+    }
+    
+    .procedure-link:hover,
+    .procedure-link:focus {
+      color: var(--accent-color);
+      outline: none;
+    }
+    
+    .procedure-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+    
+    .procedure-link:hover::after,
+    .procedure-link:focus::after {
+      width: 100%;
+    }
+    
+    .bullet {
+      width: 8px;
+      height: 8px;
+      background-color: var(--secondary-color);
+      border-radius: 50%;
+      margin-left: 15px;
+      transition: var(--transition-standard);
+      flex-shrink: 0;
+    }
+    
+    .procedure-item:hover .bullet {
+      transform: scale(1.5);
+      background-color: var(--accent-color);
+    }
+    
+    /* Decorative elements */
+    .decoration {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .decoration-1 {
+      top: 100px;
+      left: 50px;
+      border: 3px solid var(--primary-color);
+      border-radius: 50%;
+    }
+    
+    .decoration-2 {
+      bottom: 100px;
+      right: 50px;
+      border: 3px solid var(--accent-color);
+      border-radius: 40%;
+    }
+    
+    /* Content spacing */
+    .content {
+      padding-top: 40px;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-standard);
+      z-index: 1000;
+      border: none;
+      width: 50px;
+      height: 50px;
+    }
+    
+    .back-to-top:hover,
+    .back-to-top:focus {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+      outline: none;
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Arrow up icon */
+    .back-to-top span {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-top: 3px solid white;
+      border-left: 3px solid white;
+      transform: rotate(45deg);
+      margin-top: 6px;
+    }
+    
+    /* Enhanced heading with gradient text */
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+      font-size: 2.5rem;
+      padding-bottom: 15px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+      border-radius: 2px;
+    }
+    
+    /* Search Bar Styles */
+    .search-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      width: 100%;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-sm);
+      font-size: 1rem;
+      transition: var(--transition-standard);
+      background-color: white;
+      padding-right: 50px;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(235, 191, 96, 0.3);
+      border-color: var(--accent-color);
+    }
+    
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+      pointer-events: none;
+    }
+    
+    /* Image hover effects */
+    .category-icon-container:hover .category-icon {
+      transform: scale(1.1);
+    }
+    
+    .category-icon-container {
+      overflow: hidden;
+    }
+    
+    /* Fallback for missing images */
+    .category-icon-container.image-error {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    }
+    
+    .category-icon-container.image-error::after {
+      content: attr(data-category);
+      position: absolute;
+      color: white;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .procedures-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .procedure-list {
+        padding-left: 30px;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-menu {
+        padding: 12px 15px;
+        width: 100%;
+        justify-content: space-around;
+        border-radius: 0;
+      }
+      
+      .nav-menu a {
+        margin-left: 0;
+        font-size: 0.8rem;
+      }
+      
+      .nav-menu a:last-child {
+        width: 36px;
+        height: 36px;
+        margin-left: 15px;
+      }
+      
+      .category-icon-container {
+        width: 70px;
+        height: 70px;
+        margin-right: 15px;
+      }
+      
+      .category-title {
+        font-size: 1.1rem;
+      }
+      
+      .procedure-link {
+        font-size: 0.9rem;
+      }
+      
+      .page-title {
+        font-size: 1.8rem;
+      }
+      
+      .decoration {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .category-icon-container {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .procedure-list {
+        padding-left: 0;
+      }
+      
+      .page-title {
+        font-size: 1.6rem;
+      }
+    }
+    
+    /* Focus styles for accessibility */
+    a:focus,
+    button:focus {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
+    }
+    
+    /* Hidden state for filtered items */
+    .procedure-category.hidden,
+    .procedure-item.hidden {
+      display: none;
+    }
+    
+    /* Loading animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .procedure-category {
+      animation: fadeIn 0.5s ease-out forwards;
+      opacity: 0;
+    }
+    
+    /* Stagger the animations */
+    .procedure-category:nth-child(1) { animation-delay: 0.1s; }
+    .procedure-category:nth-child(2) { animation-delay: 0.2s; }
+    .procedure-category:nth-child(3) { animation-delay: 0.3s; }
+    .procedure-category:nth-child(4) { animation-delay: 0.4s; }
+    .procedure-category:nth-child(5) { animation-delay: 0.5s; }
+    .procedure-category:nth-child(6) { animation-delay: 0.6s; }
+    .procedure-category:nth-child(7) { animation-delay: 0.7s; }
+    .procedure-category:nth-child(8) { animation-delay: 0.8s; }
+    
+    /* Dynamic back-to-top button scaling */
+    .back-to-top {
+      transform-origin: center;
+      transition: 
+        var(--transition-standard),
+        transform 0.2s ease-out;
+    }
+    
+    .back-to-top.visible.scroll-25 {
+      transform: scale(1.1);
+    }
+    .back-to-top.visible.scroll-50 {
+      transform: scale(1.2);
+    }
+    .back-to-top.visible.scroll-75 {
+      transform: scale(1.3);
+    }
+    .back-to-top.visible.scroll-100 {
+      transform: scale(1.4);
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Menu Button -->
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">
+    <span></span>
+  </button>
+  
+  <!-- Mobile Navigation Menu -->
+  <div class="mobile-nav-menu" id="mobileNavMenu">
+    <a href="https://drzaidshakir3.github.io/drzaidshakir/">أحجز موعد</a>
+    <a href="https://drzaidshakir.com/contact-us">تواصل معنا</a>
+    <a href="https://drzaidshakir.com/about-us1">معلومات عنا</a>
+    <a href="https://drzaidshakir.com/home">الصفحة الرئيسية</a>
+  </div>
+  
+  <!-- Overlay for mobile menu -->
+  <div class="overlay" id="overlay"></div>
+
+  <nav class="nav-menu" aria-label="Main navigation">
+    <a href="https://drzaidshakir3.github.io/drzaidshakir/">أحجز موعد</a>
+    <a href="https://drzaidshakir.com/contact-us">تواصل معنا</a>
+    <a href="https://drzaidshakir.com/about-us1">معلومات عنا</a>
+    <a href="https://drzaidshakir.com/home" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M12 2.25L1 12h3v9h7v-6h2v6h7v-9h3L12 2.25z"/>
+      </svg>
+    </a>
+  </nav>
+  
+  <div class="container">
+    <header>
+      <h1 class="page-title">Advanced Cosmetic Procedures</h1>
+    </header>
+    
+     <!-- Search Bar -->
+     <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search procedures (e.g. 'liposuction', 'facelift')" aria-label="Search cosmetic procedures">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+    </div>
+    
+    <div class="content">
+      <div class="procedures-grid" id="proceduresContainer">
+        <!-- Breast Surgery -->
+        <div class="procedure-category" data-category="breast">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Breast">
+              <img src="homo.png" alt="Breast Surgery" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">جراحة الثدي</h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item" data-procedure="breast reduction">
+              <a href="https://drzaidshakir.com/tghht6576" class="procedure-link">تصغير الثدي</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="mastopexy lift">
+              <a href="https://drzaidshakir.com/65647tyrh" class="procedure-link">رفع الثدي (Mastopexy)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="augmentation implants fat transfer">
+              <a href="https://drzaidshakir.com/gy56hfghn" class="procedure-link">تكبير الثدي (بالسيليكون أو حقن الشحوم)</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Body Contouring -->
+        <div class="procedure-category" data-category="body">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Body">
+              <img src="homo2.png" alt="Body Contouring" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">تنسيق القوام</h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item" data-procedure="abdominoplasty tummy tuck">
+              <a href="https://drzaidshakir.com/fdg325443" class="procedure-link">شد البطن (Abdominoplasty)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="liposuction fat transfer">
+              <a href="https://drzaidshakir.com/656yuyutyu" class="procedure-link">شفط الدهون (Liposuction)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="brachioplasty arm lift">
+              <a href="https://drzaidshakir.com/yuyu6767" class="procedure-link">شد الذراعين (Brachioplasty)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="thigh lower body lift">
+              <a href="https://drzaidshakir.com/tyty547567" class="procedure-link">شد الفخذين (Thigh Lift)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="thigh lower body lift">
+              <a href="https://drzaidshakir.com/jkuik768996789" class="procedure-link">رفع وتكبير الأرداف البرازيلية (BBL)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="thigh lower body lift">
+              <a href="https://drzaidshakir.com/tyrtjngh658567" class="procedure-link">إزالة الذقن المزدوجة</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Non-Surgical Treatments -->
+        <div class="procedure-category" data-category="non-surgical">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Non-Surgical">
+              <img src="homo3.png" alt="Non-Surgical Treatments" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">الإجراءات التجميلية غير الجراحية</h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item" data-procedure="dermal fillers">
+              <a href="https://drzaidshakir.com/dfg5767yh" class="procedure-link">حقن الفيلر</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="neurotoxins botox dysport">
+              <a href="https://drzaidshakir.com/rghrthg5467" class="procedure-link">حقن البوتوكس</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="mesotherapy skin boosters">
+              <a href="https://drzaidshakir.com/uyjyujyj" class="procedure-link">العلاج الميزوثيرابي</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="mesotherapy skin boosters">
+              <a href="https://drzaidshakir.com/ghjmui768" class="procedure-link">علاج البلازما الغنية بالصفائح الدموية (PRP)</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Facial Rejuvenation -->
+        <div class="procedure-category" data-category="facial">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Facial">
+              <img src="homo4.png" alt="Facial Rejuvenation" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">جراحة الوجه</h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item" data-procedure="rhinoplasty nose reshaping">
+              <a href="https://drzaidshakir.com/gbngfh567" class="procedure-link">عملية تجميل الأنف (Rhinoplasty)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="blepharoplasty eyelid lift">
+              <a href="https://drzaidshakir.com/85657hj" class="procedure-link">عملية تجميل الجفون (Blepharoplasty)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="endoscopic brow lift">
+              <a href="https://drzaidshakir.com/fvv" class="procedure-link">رفع الحاجب (Brow Lift)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="endoscopic brow lift">
+              <a href="https://drzaidshakir.com/hghghghg57" class="procedure-link">شد الوجه (Face Lift)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="endoscopic brow lift">
+              <a href="https://drzaidshakir.com/8768jghjhgj" class="procedure-link">شد الرقبة</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="endoscopic brow lift">
+              <a href="https://drzaidshakir.com/ytujytj78u678" class="procedure-link">شد عضلات الرقبة (Platysmaplasty)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="endoscopic brow lift">
+              <a href="https://drzaidshakir.com/67657ugfhhn" class="procedure-link">تصحيح الأذن البارزة (Otoplasty)</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="endoscopic brow lift">
+              <a href="https://drzaidshakir.com/gfgfg576" class="procedure-link">رفع الشفاه</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="endoscopic brow lift">
+              <a href="https://drzaidshakir.com/gnghjyu6" class="procedure-link">حقن الدهون لاستعادة حجم الوجه</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Laser & Energy Treatments -->
+        <div class="procedure-category" data-category="laser">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Laser">
+              <img src="homo5.png" alt="Laser Treatments" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">العلاج بالليزر</h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item" data-procedure="scar revision treatment">
+              <a href="https://drzaidshakir.com/fdghdrgh5467" class="procedure-link">تقليل آثار الندبات الجراحية</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="scar revision treatment">
+              <a href="https://drzaidshakir.com/ththxh" class="procedure-link">علاج ندبات حب الشباب</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="scar revision treatment">
+              <a href="https://drzaidshakir.com/ggbngfhu6" class="procedure-link">إزالة الشعر بالليزر</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item" data-procedure="laser hair removal">
+              <a href="https://drzaidshakir.com/fbhht757" class="procedure-link">تجديد البشرة بالليزر</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Male-Specific Procedures -->
+        <div class="procedure-category" data-category="male">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Male">
+              <img src="homo6.png" alt="Male Procedures" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">جراحة الذكور </h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item" data-procedure="gynecomastia correction">
+              <a href="https://drzaidshakir.com/ghh6u56ujh" class="procedure-link">تصحيح التثدي (Gynecomastia Correction)</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Burn Surgery -->
+        <div class="procedure-category" data-category="burn">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Burn">
+              <img src="homo7.png" alt="Burn Surgery" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">جراحة الحروق </h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item">
+              <a href="https://drzaidshakir.com/hfhtht6588" class="procedure-link">علاج الحروق الحادة</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item">
+              <a href="https://drzaidshakir.com/fbfdbht76i" class="procedure-link">عقابيل ما بعد الحروق</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hand Surgery -->
+        <div class="procedure-category" data-category="hand">
+          <div class="category-header">
+            <div class="category-icon-container" data-category="Hand">
+              <img src="homo8.png" alt="Hand Surgery" class="category-icon" onerror="this.parentNode.classList.add('image-error')">
+            </div>
+            <h2 class="category-title">جراحة اليد</h2>
+          </div>
+          <div class="procedure-list">
+            <div class="procedure-item">
+              <a href="https://randry.store/dagekdebgks" class="procedure-link">إصلاح إصابات اليد</a>
+              <div class="bullet"></div>
+            </div>
+            <div class="procedure-item">
+              <a href="https://drzaidshakir.com/gbgfh65768" class="procedure-link">تصحيح تشوهات اليد الخلقية</a>
+              <div class="bullet"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+  </div>
+  
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <span></span>
+  </button>
+  
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu functionality
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNavMenu = document.getElementById('mobileNavMenu');
+      const overlay = document.getElementById('overlay');
+      
+      if (mobileMenuBtn && mobileNavMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+          this.classList.toggle('active');
+          mobileNavMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+          
+          // Update aria-expanded attribute
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+        });
+        
+        overlay.addEventListener('click', function() {
+          mobileMenuBtn.classList.remove('active');
+          mobileNavMenu.classList.remove('active');
+          this.classList.remove('active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      }
+      
+      // [Rest of your existing JavaScript remains unchanged]
+      // Back to Top button functionality with scaling
+      const backToTopButton = document.getElementById('backToTop');
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+      const scrollableDistance = docHeight - winHeight;
+      
+      window.addEventListener('scroll', function() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollPercentage = (scrollPosition / scrollableDistance) * 100;
+        
+        // Show/hide button
+        if (scrollPosition > 300) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+        
+        // Remove all scroll percentage classes
+        backToTopButton.classList.remove('scroll-25', 'scroll-50', 'scroll-75', 'scroll-100');
+        
+        // Add appropriate scroll percentage class
+        if (scrollPercentage > 25) backToTopButton.classList.add('scroll-25');
+        if (scrollPercentage > 50) backToTopButton.classList.add('scroll-50');
+        if (scrollPercentage > 75) backToTopButton.classList.add('scroll-75');
+        if (scrollPercentage > 90) backToTopButton.classList.add('scroll-100');
+      });
+      
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Search functionality
+      const searchInput = document.getElementById('searchInput');
+      const procedureItems = document.querySelectorAll('.procedure-item');
+      const procedureCategories = document.querySelectorAll('.procedure-category');
+      
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          const searchTerm = this.value.trim().toLowerCase();
+          
+          if (searchTerm.length > 0) {
+            let visibleItems = 0;
+            let visibleCategories = 0;
+            
+            // Search through procedure items
+            procedureItems.forEach(item => {
+              const procedureText = item.getAttribute('data-procedure') ? item.getAttribute('data-procedure').toLowerCase() : '';
+              const linkText = item.querySelector('.procedure-link').textContent.toLowerCase();
+              
+              if (procedureText.includes(searchTerm) || linkText.includes(searchTerm)) {
+                item.classList.remove('hidden');
+                visibleItems++;
+              } else {
+                item.classList.add('hidden');
+              }
+            });
+            
+            // Show/hide categories based on visible items
+            procedureCategories.forEach(category => {
+              const categoryItems = category.querySelectorAll('.procedure-item');
+              const visibleCategoryItems = category.querySelectorAll('.procedure-item:not(.hidden)');
+              
+              if (visibleCategoryItems.length > 0) {
+                category.classList.remove('hidden');
+                visibleCategories++;
+              } else {
+                category.classList.add('hidden');
+              }
+            });
+            
+          } else {
+            // Reset search
+            procedureItems.forEach(item => item.classList.remove('hidden'));
+            procedureCategories.forEach(category => category.classList.remove('hidden'));
+          }
+        });
+      }
+      
+      // Make category headers toggle their sections
+      document.querySelectorAll('.category-header').forEach(header => {
+        header.addEventListener('click', function() {
+          const list = this.nextElementSibling;
+          
+          if (list.style.maxHeight) {
+            list.style.maxHeight = null;
+          } else {
+            list.style.maxHeight = list.scrollHeight + 'px';
+          }
+        });
+        
+        // Initialize all lists as visible
+        const list = header.nextElementSibling;
+        list.style.maxHeight = list.scrollHeight + 'px';
+        list.style.overflow = 'hidden';
+      });
+      
+      // Add keyboard navigation support
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            this.click();
+            e.preventDefault();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
